@@ -18,7 +18,6 @@ def get_account_dial_groups():
 
 #Returns a dial group for an account
 def get_account_dial_group(groupId):
-    print ("get_account_dial_group()")
     endpoint = "admin/accounts/~/dialGroups/" + groupId
     try:
         ev.get(endpoint, None, callback)

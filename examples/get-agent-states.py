@@ -12,7 +12,6 @@ def callback(response):
     print (response._content)
 
 def get_agent_states():
-    print ("get_agent_states()")
     endpoint = "admin/accounts/~/realTimeData/agent"
     try:
         ev.get(endpoint, None, callback)
