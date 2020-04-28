@@ -21,14 +21,16 @@ class RestClient(object):
     clientSecret = ""
     mode = ""
 
-    def __init__(self, clientId=None, clientSecret=None, mode="Engage"):
+    def __init__(self, clientId=None, clientSecret=None):
         self.mode = mode
-        if mode == "Engage":
+        if clientId == None || clientSecret == None:
+            self.serverUrl = self.LEGACY_SERVER_URL
+            self.mode = "Legacy"
+        else:
             self.serverUrl = self.EV_SERVER_URL
             self.clientId = clientId
             self.clientSecret = clientSecret
-        else:
-            self.serverUrl = self.LEGACY_SERVER_URL
+            self.mode = "Engage"
 
     def getAccountId(self):
         return self.accountId
