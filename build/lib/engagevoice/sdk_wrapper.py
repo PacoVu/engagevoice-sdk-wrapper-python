@@ -22,7 +22,6 @@ class RestClient(object):
     mode = ""
 
     def __init__(self, clientId=None, clientSecret=None):
-        self.mode = mode
         if clientId == None || clientSecret == None:
             self.serverUrl = self.LEGACY_SERVER_URL
             self.mode = "Legacy"
