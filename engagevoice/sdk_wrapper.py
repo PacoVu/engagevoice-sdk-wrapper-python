@@ -1,5 +1,4 @@
 import requests
-from requests import Request, Session
 import base64
 import urllib
 import time
@@ -22,7 +21,7 @@ class RestClient(object):
     mode = ""
 
     def __init__(self, clientId=None, clientSecret=None):
-        if clientId == None || clientSecret == None:
+        if clientId == None or clientSecret == None:
             self.serverUrl = self.LEGACY_SERVER_URL
             self.mode = "Legacy"
         else:
@@ -109,7 +108,6 @@ class RestClient(object):
                 self.accountId = jsonObj['accounts'][0]['accountId']
                 tokens = self.__readPermanentsToken(jsonObj["authToken"])
                 jsonObj['permanentTokens'] = tokens
-                print (jsonObj)
                 return res
             else:
                 raise ValueError(res)

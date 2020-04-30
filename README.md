@@ -37,13 +37,13 @@ RestClient(clientId, clientSecret, mode)
 
 *Example code:*
 ```
-from engagevoice-sdk-wrapper import *
+from engagevoice.sdk_wrapper import *
 
-# access legacy server
-ev = RestClient("","","Legacy")
+# Access legacy server
+ev = RestClient()
 
-# access migrated server
-ev = RestClient(YOUR_RC_CLIENT_ID, YOUR_RC_CLIENT_SECRET, mode)
+# Access migrated server
+ev = RestClient(RC_APP_CLIENT_ID, RC_APP_CLIENT_SECRET)
 ```
 ----
 **Function login**
@@ -64,7 +64,7 @@ ev = RestClient(YOUR_RC_CLIENT_ID, YOUR_RC_CLIENT_SECRET, mode)
 ```
 # Login with RingCentral Office user credentials.
 
-ev = RestClient(RINGCENTRAL_CLIENT_ID, RINGCENTRAL_CLIENT_SECRET))
+ev = RestClient(RC_APP_CLIENT_ID, RC_APP_CLIENT_SECRET))
 try:
     resp = ev.login(RC_USERNAME, RC_PASSWORD, RC_EXTENSION_NUMBER)
     print (resp)
@@ -74,9 +74,9 @@ except Exception as e:
 
 # Login with Legacy user credentials
 
-ev = EngageVoice(None, None, "Legacy")
+ev = EngageVoice()
 try:
-    resp = ev.login(USERNAME, PASSWORD)
+    resp = ev.login(LEGACY_USERNAME, LEGACY_PASSWORD)
     print (resp)
 except Exception as e:
     print (e)

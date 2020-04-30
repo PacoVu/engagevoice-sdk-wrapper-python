@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.5.3'
+version = '0.5.6'
 
-setup(name='engagevoice-sdk-wrapper',
+setup(name='engagevoice_sdk_wrapper',
       version=version,
       description="RingCentral Engage Voice SDK Wrapper for Python",
       long_description="""\
