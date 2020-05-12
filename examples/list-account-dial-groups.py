@@ -7,6 +7,11 @@ RC_USERNAME=""
 RC_PASSWORD=""
 RC_EXTENSION=""
 
+LEGACY_USERNAME= ""
+LEGACY_PASSWORD= ""
+
+MODE = "ENGAGE"
+
 def get_account_dial_groups():
     print ("get_account_dial_groups()")
     try:
@@ -24,9 +29,19 @@ def get_account_dial_group(groupId):
     except Exception as e:
         print (e)
 
-ev = RestClient(RC_CLIENT_ID, RC_CLIENT_SECRET)
+if (MODE == "ENGAGE"):
+    ev = RestClient(RC_CLIENT_ID, RC_CLIENT_SECRET)
+    username= RC_USERNAME
+    password = RC_PASSWORD
+    extensionNum = RC_EXTENSION
+else:
+    ev = RestClient();
+    username= LEGACY_USERNAME
+    password = LEGACY_PASSWORD
+    extensionNum = ""
+
 try:
-    resp = ev.login(RC_USERNAME, RC_PASSWORD, RC_EXTENSION)
+    resp = ev.login(username, password, extensionNum)
     if resp:
         get_account_dial_groups()
 except Exception as e:

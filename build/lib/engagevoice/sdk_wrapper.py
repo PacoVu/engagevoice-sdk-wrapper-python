@@ -176,9 +176,8 @@ class RestClient(object):
         try:
             res = requests.get(url, headers=headers)
             if res.status_code == 200:
-                #jsonObj = json.loads(res._content)
                 if callback is None:
-                    return res._content
+                    return json.loads(res._content)
                 else:
                     callback(res)
             else:
@@ -205,21 +204,18 @@ class RestClient(object):
         if self.mode == "Engage":
             headers = {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json',
                     'Authorization': 'Bearer ' + self.accessToken
                     }
         else:
             headers = {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json',
                     'X-Auth-Token': self.accessToken
                 }
         try:
             res = requests.post(url, headers=headers, data=body)
-            if res.status_code == 200:
-                #jsonObj = json.loads(res._content)
+            if res.status_code == 200 or res.status_code == 201:
                 if callback is None:
-                    return res._content
+                    return json.loads(res._content)
                 else:
                     callback(res)
             else:
@@ -245,18 +241,16 @@ class RestClient(object):
         if self.mode == "Engage":
             headers = {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json',
                     'Authorization': 'Bearer ' + self.accessToken
                     }
         else:
             headers = {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json',
                     'X-Auth-Token': self.accessToken
                 }
         try:
             res = requests.delete(url, headers=headers, data=body)
-            if res.status_code == 200:
+            if res.status_code == 200 or res.status_code == 201:
                 jsonObj = json.loads(res._content)
                 if callback is None:
                     return jsonObj
@@ -285,18 +279,16 @@ class RestClient(object):
         if self.mode == "Engage":
             headers = {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json',
                     'Authorization': 'Bearer ' + self.accessToken
                     }
         else:
             headers = {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json',
                     'X-Auth-Token': self.accessToken
                 }
         try:
-            res = requests.delete(url, headers=headers, data=body)
-            if res.status_code == 200:
+            res = requests.put(url, headers=headers, data=body)
+            if res.status_code == 200 or res.status_code == 201:
                 jsonObj = json.loads(res._content)
                 if callback is None:
                     return jsonObj
